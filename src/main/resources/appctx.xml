@@ -5,7 +5,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd" >
 
-<!-- Assembler.java 대신! -->
+<!-- Assembler.java 대신!
+객체 생성, 객체 생성 시 필요한 의존설정 -->
 
 	<bean id="memberDao" class="member.dao.MemberDao"/>
 	
@@ -19,9 +20,22 @@
 	
 	<bean id="memberPrinter" class="member.printer.MemberPrinter"/>
 	
+	<!--  생성자를 통한 의존 주입 -->
 	<bean id="memberListPrinter" class="member.printer.MemberListPrinter">
 		<constructor-arg ref="memberDao"/>
 		<constructor-arg ref="memberPrinter"/>
 	</bean>
 	
+	<!--  setter method를 통한 의존 주입 -->
+	<bean id="memberInfoPrinter" class="member.printer.MemberInfoPrinter">
+		<property name="memberDao" ref="memberDao"/>
+		<property name="memberPrinter" ref="memberPrinter"/>
+	</bean>
+	
+	<bean id="versionPrinter" class="member.printer.VersionPrinter">
+		<property name="majorVersion" value="4"/>
+		<property name="minorVersion" value="1"/>
+		<!-- Spring에서는 기본 자료형을 사용할때 자료형을 지정하지 않고, 자동으로 형을 변환시켜준다.
+		setter method가 아닌 생성자에서 기본자료에 대한 데이터를 받는 경우에  contructor-arg 태그에 value= 값 속성을 사용할 수 있다 -->
+	</bean>
 </beans>

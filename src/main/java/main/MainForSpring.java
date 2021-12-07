@@ -10,7 +10,9 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import member.exception.AlreadyExistingMemberException;
 import member.exception.IdPasswordNotMatchingException;
 import member.exception.MemberNotFoundException;
+import member.printer.MemberInfoPrinter;
 import member.printer.MemberListPrinter;
+import member.printer.VersionPrinter;
 import member.request.RegisterRequest;
 import member.service.ChangePasswordService;
 import member.service.MemberRegisterService;
@@ -38,6 +40,12 @@ public class MainForSpring {
 				continue;
 			}else if(command.equals("list")) {
 				processListCommand();
+				continue;
+			}else if(command.startsWith("info")) {
+				processInfoCommand(command.split(" "));
+				continue;
+			}else if(command.equals("ver")) {
+				processVersionCommand();
 				continue;
 			}
 			printHelp();
@@ -93,11 +101,27 @@ public class MainForSpring {
 		memberListPrinter.printAll();
 	}
 	
+	private static void processInfoCommand(String[] arg)  {
+		if (arg.length!=2) {
+			printHelp();
+			return;
+		}
+		MemberInfoPrinter memberInfoPrinter = appctx.getBean("memberInfoPrinter", MemberInfoPrinter.class);
+		memberInfoPrinter.printMemberInfo(arg[1]);
+	}
+	
+	private static void processVersionCommand() {
+		VersionPrinter versionPrinter = appctx.getBean("versionPrinter", VersionPrinter.class);
+		versionPrinter.printVersion();
+	}
 	private static void printHelp() {
 		System.out.println();
 		System.out.println("명령어 사용법");
 		System.out.println("new [이메일] [이름] [암호] [암호확인]");
 		System.out.println("change [이메일] [현재비밀번호] [변경할비밀번호]");
+		System.out.println("list");
+		System.out.println("info [이메일]");
+		System.out.println("ver");
 		System.out.println();
 	}
 }
