@@ -13,14 +13,15 @@
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-context</artifactId>
-  		<version>4.1.0.RELEASE</version>
+  		<version>4.3.25.RELEASE</version>
   	</dependency>
   </dependencies>
   
   <build>
   	<plugins>
   		<plugin>
-  			<artifactId>maven-complier-plugin</artifactId>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-compiler-plugin</artifactId>
   			<version>3.1</version>
   			<configuration>
   				<source>${java-version}</source>
