@@ -10,6 +10,11 @@
   
   <dependencies>
   	<!-- 의존 라이브러리 등록 -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-context</artifactId>
+  		<version>4.1.0.RELEASE</version>
+  	</dependency>
   </dependencies>
   
   <build>
