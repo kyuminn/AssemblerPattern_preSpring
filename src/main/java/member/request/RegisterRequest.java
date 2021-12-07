@@ -1,5 +1,7 @@
 package member.request;
 
+// 등록을 위한 정보가 담겨있는 객체
+// form 태그에서 적은 request의 parameter가 담길 command 객체와 같은 역할을 한다!
 public class RegisterRequest {
 	private String email;
 	private String password;
