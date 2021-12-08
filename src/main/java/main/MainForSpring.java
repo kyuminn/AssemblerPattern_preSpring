@@ -23,7 +23,7 @@ public class MainForSpring {
 	// appctx : spring 설정파일 (appctx.xml)을 통해 객체를 생성하고 주입하는 스프링 컨테이너 객체!
 	public static void main(String[] args) throws IOException {
 		// new GenericXmlApplicationContext 의 기본  경로 : src/main/resources로 잡힘
-		appctx = new GenericXmlApplicationContext("classpath:appctx.xml");
+		appctx = new GenericXmlApplicationContext("classpath:appctx.xml"); // Spring Container 객체 생성되면서 컨테이너가 담고있는 bean들(객체)도 생성됨
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		while(true) {
