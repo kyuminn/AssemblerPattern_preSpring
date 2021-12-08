@@ -36,6 +36,7 @@
 		<property name="majorVersion" value="4"/>
 		<property name="minorVersion" value="1"/>
 		<!-- Spring에서는 기본 자료형을 사용할때 자료형을 지정하지 않고, 자동으로 형을 변환시켜준다.
+		객체를 참조할때는 reg, 기본 자료형은 value로 주입해준다. 기본 자료형의 경우 String 타입으로 넣어줘야 한다. 자동으로 형변환되어 들어감.
 		setter method가 아닌 생성자에서 기본자료에 대한 데이터를 받는 경우에  contructor-arg 태그에 value= 값 속성을 사용할 수 있다 -->
 	</bean>
 </beans>
